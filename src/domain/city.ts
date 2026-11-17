@@ -1,9 +1,12 @@
+import Accomodation from "./accommodation.ts";
+
 class City {
   #cityName!: string;
   #country!: string;
   #dateFrom!: Date;
   #dateTo!: Date;
   #notes: string = "";
+  #accomodation!: Accomodation;
 
   constructor(
     cityName: unknown,
@@ -11,6 +14,7 @@ class City {
     dateFrom: unknown,
     dateTo: unknown,
     notes: unknown = "",
+    accomodation: Accomodation,
   ) {
     this.setName(cityName);
     this.setCountry(country);
@@ -18,6 +22,7 @@ class City {
     this.setDateFrom(dateFrom);
     this.setDateTo(dateTo);
     this.setNotes(notes);
+    this.addAccomodation(accomodation);
   }
 
   getCountry(): string {
@@ -32,6 +37,17 @@ class City {
       throw new Error("Country must be a string");
     }
     this.#country = country.trim();
+  }
+
+  getAccomodation(): Accomodation {
+    return this.#accomodation;
+  }
+
+  addAccomodation(accomodation: Accomodation): void {
+    if (accomodation === null || accomodation === undefined) {
+      throw new Error("Alojamiento debe ser de tipo Accomodation");
+    }
+    this.#accomodation = accomodation;
   }
 
   getName(): string {
