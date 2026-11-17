@@ -25,8 +25,7 @@ describe("TripManager", () => {
     new Accommodation("Test AcName",4)
   );
 }
-let city: City;
-city = createCity();
+const city = createCity();
 manager.addCity(city);
 expect(manager.getAllCities().length).toBe(1);
 expect(manager.findCityByName("TestCity")).toEqual(city);

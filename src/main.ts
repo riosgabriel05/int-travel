@@ -1,5 +1,6 @@
 import TripManager from "./domain/tripManager.ts";
 import City from "./domain/city.ts";
+import Accommodation from "./domain/accommodation.ts";
 
 const manager = new TripManager();
 const form = document.getElementById("city-form") as HTMLFormElement | null;
@@ -40,6 +41,9 @@ function handleCityFormSubmit(e: SubmitEvent): void {
   const name = (document.getElementById("city-name") as HTMLInputElement).value;
   const country = (document.getElementById("city-country") as HTMLInputElement)
     .value;
+  const nameAc = (document.getElementById("aloj-name") as HTMLInputElement).value;
+  const costAc = (document.getElementById("aloj-cost") as HTMLInputElement)
+    .value;
   const dateFrom = (
     document.getElementById("city-date-from") as HTMLInputElement
   ).value;
@@ -54,6 +58,7 @@ function handleCityFormSubmit(e: SubmitEvent): void {
     new Date(dateFrom),
     new Date(dateTo),
     notes,
+    new Accommodation(nameAc,costAc),
   );
   if (!city) {
     showToast("Error", "No se pudo crear la ciudad", "danger");
